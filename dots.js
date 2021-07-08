@@ -31,7 +31,10 @@ function dotMatrix(){
             dot.style.backgroundColor = (selectedDots[i][j] == 1)? selectDot : deselectDot;
         }
     }
+    button();
+    updateTextBox();
 }
+
 da(window, 'resize', dotMatrix);
 da(window, 'mousedown', mouseDown);
 da(window, 'mouseup', mouseUp);
@@ -85,3 +88,40 @@ function updateTextBox(){
     er(cString)
     d('selectionBar').value = cString;
 }
+
+da(d('rotate-i'), 'click', rotateAni);
+
+function rotateAni(){
+    animate({
+        duration: 1000,
+        timing: function(timeFraction) {
+            return val = (1/(1+Math.exp(-(30*timeFraction-5))));
+        },
+        draw: function(progress){
+            d('rotate-i').style.transform = 'rotate('+Math.round(progress*360)+'deg)';
+        }
+    });
+    var rotatedMatrix = [];
+    for(var i =0; i<8; i++)
+        rotatedMatrix[i] = [0,0,0,0,0,0,0,0];
+    for(var i=0; i<8; i++){
+        for(var j=0; j<8; j++){
+            rotatedMatrix[j][8-(i+1)] = selectedDots[i][j];
+        }
+    }
+    selectedDots = rotatedMatrix;
+    dotMatrix();
+}
+
+da(d('flip'), 'change', function(){
+    var flippedMatrix= [];
+    for(var i =0; i<8; i++)
+        flippedMatrix[i] = [0,0,0,0,0,0,0,0];
+    for(var i=0; i<8; i++){
+        for(var j=0; j<8; j++){
+            flippedMatrix[i][8-(j+1)] = selectedDots[i][j];
+        }
+    }
+    selectedDots = flippedMatrix;
+    dotMatrix();
+});
