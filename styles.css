@@ -1,0 +1,189 @@
+:root{
+ --bgColor: #444444;
+ --header: #171717;
+ --boxColor: #F0EBCC;
+ --buttonRed: #CD113B;
+ --buttonHRed: #DA0037;
+ --buttonGreen: #82d416;
+ --buttonHGreen: #064420;
+ --buttonBlue: #125D98;
+ --buttonHBlue: #0f69df;
+}
+*{
+    box-sizing:border-box;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+body{
+    font-family: 'Oxygen', sans-serif;
+    background-color: var(--bgColor);
+}
+.row:after{
+    display: table;
+    content:"";
+    clear:both;
+}
+.row > div{
+    padding: 10px;
+}
+.c3{
+    float:left;
+    width:33.33%;
+}
+.c2{
+    float:left;
+    width:50%;
+}
+.c6{
+    float:left;
+    width:16.66%;
+}
+.center{
+    display:table;
+    margin-left:auto;
+    margin-right:auto;
+}
+.dt{
+    display: table;
+}
+
+.t-title{
+    font-size: 3em;
+}
+.t-biggest{
+    font-size: 5em;
+}
+.t-big{
+    font-size: 1.8em;
+}
+.t-medium{
+    font-size: 1.5em;
+}
+.t-small{
+    font-size: 0.9em;
+}
+.tf{
+    color: #fff;
+}
+.tb{
+    color:#000;
+}
+.px{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.py{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.px2{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.py2{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.mx{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.my{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.w80{
+    width: 80%;
+}
+.w100{
+    width: 100%;
+}
+.header{
+    background-color: var(--header);
+}
+.box{
+    background-color: var(--boxColor);
+    padding: 10px;
+    width: 100%;
+    border-radius: 4px;
+    height: 250px;
+}
+/*buttons*/
+.btn{
+    border: none;
+    padding: 20px;
+    border-radius: 4px;
+}
+.rbtn{
+    background-color: var(--buttonRed);
+}
+.gbtn{
+    background-color: var(--buttonGreen);
+}
+.bbtn{
+    background-color: var(--buttonBlue);
+}
+.rbtn:hover,.rbtn:focus{
+    background-color: var(--buttonHRed);
+}
+.gbtn:hover,.gbtn:focus{
+    background-color: var(--buttonHGreen);
+}
+.bbtn:hover,.bbtn:focus{
+    background-color: var(--buttonHBlue);
+}
+
+.btn:active{
+    transform: scale(0.96);
+}
+@media (max-width: 1200px) and (min-width: 768px){
+    .c6{
+        width:25%;
+    }
+    .t-biggest{
+        font-size: 4em;
+    }
+    .t-big{
+        font-size: 1.5em;
+    }
+    .t-medium{
+        font-size: 1.2em;
+    }
+}
+@media (max-width: 767px) and (min-width: 500px){
+    .c6{
+        width:50%;
+    }
+    .t-biggest{
+        font-size: 3.5em;
+    }
+    .t-big{
+        font-size: 1.3em;
+    }
+    .t-medium{
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 499px){
+    .row > div{
+        padding: 25px;
+    }
+    .c6{
+        width: 100%;
+    }
+    .c3{
+        width: 100%;
+    }
+    .c2{
+        width: 100%;
+    }
+}

@@ -1,0 +1,125 @@
+.matrixRow:after{
+    content: "";
+    clear: both;
+    width: 100%;
+    display: table;
+}
+
+.cell{
+    float: left;
+    width:12.5%;
+}
+
+.dot{
+    width:90%;
+    height: 90%;
+    border-radius:9999px;
+    background-color: #CD113B;
+}
+.settings{
+    float: left;
+    width: 20%;
+}
+.textbox>input{
+    font-size: 2.2em;
+    padding: 5px 30px;
+    width: 80%;
+    border: none;
+    border-radius: 3em;
+}
+/*Radio*/
+.optionRadio{
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+}
+.optionRadio input{
+    display: none;
+}
+.optionRadio .check{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 9999px;
+}
+.optionRadio:hover input ~ .check{
+    background-color: #ccc;
+}
+
+.optionRadio .check:after{
+    content: "";
+    position:absolute;
+    display: none;
+}
+.optionRadio input:checked ~ .check{
+    background: #FFF;
+}
+.optionRadio input:checked ~ .check:after{
+    display: block;
+}
+
+.optionRadio .check:after{
+    top: 7px;
+    left: 7px;
+    width: 12px;
+    height: 12px;
+    border-radius: 9999px;
+    background-color: #2196F3;
+}
+
+/*Checkbox*/
+
+.optionCheck{
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor:pointer;
+    font-size: 23px;
+}
+.optionCheck input{
+    display: none;
+}
+
+.optionCheck .check{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 25px;
+    height: 25px;
+    background-color: #eee;
+}
+
+.optionCheck:hover input ~ .check{
+    background-color: #ccc;
+}
+
+.optionCheck input:checked ~ .check{
+    background-color: #2196F3;
+}
+
+.optionCheck .check:after{
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.optionCheck input:checked ~ .check:after{
+    display: block;
+}
+
+.optionCheck .check:after{
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}

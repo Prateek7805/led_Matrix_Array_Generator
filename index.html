@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dots to Array</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dots.css">
+</head>
+<body>
+    <div class="header">
+        <p class="t-title center tf">Dots</p>
+    </div>
+    <div class="content">
+            <div class="row">
+                <div class="c3"></div>
+                <div class="c3">
+                    <div id='matrix' class='dt w100'>
+                        <div class="matrixRow">
+                            <div class="cell">
+                                <div class="dot"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="c3"></div>
+            </div>
+            <div class="options px2 w80 center">
+                <div class="row">
+                    <div class="settings">
+                        <label class="optionRadio tf">Rotate
+                            <input type="radio" name="settings" checked>
+                            <span class="check"></span>
+                        </label>
+                    </div>
+                    <div class="settings">
+                        <label class="optionRadio tf">Flip
+                            <input type="radio" name="settings">
+                            <span class="check"></span>
+                        </label>
+                    </div>
+                    <div class="settings">
+                        <label class="optionCheck tf">Grid On
+                            <input type="checkbox">
+                            <span class="check"></span>
+                        </label>
+                    </div>
+                    <div class="settings">
+                        <label class="optionCheck tf">Flip Grid-X
+                            <input type="checkbox">
+                            <span class="check"></span>
+                        </label>
+                    </div>
+                    <div class="settings">
+                        <label class="optionCheck tf">Flip Grid-Y
+                            <input type="checkbox">
+                            <span class="check"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="textbox center w100 px py">
+                <input id='selectionBar' class='center' type="text">
+            </div>
+    </div>
+    <script src='tinyWrapper.js'></script>
+    <script src='dots.js'></script>
+</body>
+</html>
