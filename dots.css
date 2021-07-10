@@ -18,7 +18,7 @@
 }
 .settings{
     float: left;
-    width: 20%;
+    width: 16.66%;
 }
 .textbox>input{
     font-size: 2.2em;
@@ -122,4 +122,35 @@
     border: solid white;
     border-width: 0 3px 3px 0;
     transform: rotate(45deg);
+}
+
+.gridX:after, .gridY:after{
+    content:"";
+    display: table;
+    width: 100%;
+    clear: both;
+}
+.xCol{
+    width: 12.5%;
+    float: left;
+}
+.yCol, .corner{
+    float:right;
+    clear:both;
+}
+.yCol > p, .xCol>p{
+    display: table;
+    color: white;
+    text-align: center;
+    margin-left: auto;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+.side{
+    width: 35%;
+    float: left;
+}
+.middle{
+    width: 30%;
+    float:left;
 }

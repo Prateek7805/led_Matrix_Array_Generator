@@ -48,13 +48,15 @@ body{
 }
 .center{
     display:table;
-    margin-left:auto;
-    margin-right:auto;
+    margin-left:auto !important;
+    margin-right:auto !important;
 }
 .dt{
     display: table;
 }
-
+.dn{
+    display:none;
+}
 .t-title{
     font-size: 3em;
 }
@@ -70,6 +72,12 @@ body{
 .t-small{
     font-size: 0.9em;
 }
+.t-right{
+    text-align:right;
+}
+.t-vm{
+    vertical-align: middle;
+}
 .tf{
     color: #fff;
 }
@@ -79,6 +87,12 @@ body{
 .px{
     padding-left: 10px;
     padding-right: 10px;
+}
+.pt{
+    padding-top: 10px;
+}
+.pt2{
+    padding-top: 20px;
 }
 .py{
     padding-top: 10px;

@@ -1,7 +1,7 @@
 var selectDot = '#fff';
 var deselectDot = '#CD113B';
 var selectedDots = [];
-
+var width;
 da(document,'DOMContentLoaded', function(){
     resetDots();
     dotMatrix();
@@ -18,21 +18,63 @@ function resetDots(){
 function dotMatrix(){
     let dm = d('matrix');
     dm.innerHTML = '';
-    let width = dm.getBoundingClientRect().width/8;
-    er(width)
+    dm.innerHTML = `<div class='matrixRow'><div class='cell'><div class='dot'></div></div></div>`
+    width = dc('cell').getBoundingClientRect().width * 0.9869;
+    var fontSize = width*0.5-4;
+    var padding = width*0.25;
+    er(width);
+    dm.innerHTML = '';
+    //grid variables
+    var gridType = d('gridType').checked;
+    var gridOn = d('grid').checked;
+    var flipGrid = d('flipGrid').checked;
+    //col grid
+    if(gridOn && !gridType){
+        dc('gridY').innerHTML='';
+        dc('gridY').innerHTML = `<div class='corner'></div>`;
+        dc('corner').style.height = fontSize+2+padding+'px';
+        for(var i=0; i<8; i++){
+            dc('gridY').innerHTML+=`<div class='yCol'><p>${1<<i}</p></div>`;
+            dc('yCol', i).style.width = 12.5+'%';
+            dc('yCol', i).style.height = width+'px';
+            dc('yCol', i).style.padding = `${padding+'px'} 0`;
+            dcn(dc('yCol', i)).style.fontSize = `${fontSize + 'px'}`;
+        }
+    }else{
+        dc('gridY').innerHTML='';
+    }
+    //row grid
+   
+    dm.innerHTML += `<div class='gridX'></div>`;
+    var grid = dc('gridX');
+    for(var i=0; i<8; i++){
+        grid.innerHTML += `<div class='xCol'><p class='center'></p></div>`;
+        dc('xCol',i).style.height = fontSize+2+padding+'px';
+    }
+    if(gridOn && gridType){
+        for(var i=0; i<8; i++){
+            dcn(dc('xCol', i)).innerHTML = 1<<(i);
+            dc('xCol', i).style.padding = `0 0 ${padding + 'px'} 0`;
+            dcn(dc('xCol', i)).style.fontSize = `${fontSize + 'px'}`; 
+        }
+    }
     for(var i=0; i<8; i++){
         dm.innerHTML += "<div class='matrixRow'></div>"; 
+        var mc = dc('matrixRow', i);
         for(var j=0; j<8; j++){
-            var mc = dc('matrixRow', i);
             mc.innerHTML += `<div class='cell'><div id='d${parseInt(8*i+j)}' class='dot center'></div></div>`;
             var cell = dcn(mc, j);
             cell.style.height = width+'px';
             var dot = dcn(cell);
-            dot.style.backgroundColor = (selectedDots[i][j] == 1)? selectDot : deselectDot;
+            var currDot = selectedDots[i][j];
+            dot.style.backgroundColor = (currDot == 1)? selectDot : deselectDot;
         }
     }
+   
+
     button();
     updateTextBox();
+    
 }
 
 da(window, 'resize', dotMatrix);
@@ -79,13 +121,15 @@ function updateTextBox(){
     for(var i=0; i<8; i++){
         var temp = 0;
         for(var j=0; j<8; j++){
-            temp += parseInt(selectedDots[j][i]*(1<<j));
+            temp += parseInt((d('gridType').checked? selectedDots[i][j] : selectedDots[j][i])*(1<<j));
         }
         arr[i] = temp;
-        cString += temp + ','
+        cString += temp + ',';
     }
+
+    d('clear').src = (arr.every(item => item === 0))? 'trash.svg' : 'trash-2.svg';
+
     cString = cString.substring(0, cString.length - 1) + '};';
-    er(cString)
     d('selectionBar').value = cString;
 }
 
@@ -125,3 +169,13 @@ da(d('flip'), 'change', function(){
     selectedDots = flippedMatrix;
     dotMatrix();
 });
+
+da(d('grid'), 'change', dotMatrix);
+da(d('gridType'), 'change', function(){
+    dotMatrix();
+    d('gridTypeName').innerHTML = this.checked? 'Row Wise' : 'Col Wise';
+});
+da(d('clear'), 'click', function(){
+    resetDots();
+    dotMatrix();
+})

@@ -13,8 +13,12 @@
     </div>
     <div class="content">
             <div class="row">
-                <div class="c3"></div>
-                <div class="c3">
+                <div class="side">
+                    <div class="gridY">
+                        
+                    </div>
+                </div>
+                <div class="middle">  
                     <div id='matrix' class='dt w100'>
                         <div class="matrixRow">
                             <div class="cell">
@@ -23,12 +27,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="c3"></div>
+                <div class="side"></div>
+            </div>
+            <div class="textbox center w100 px py">
+                <input id='selectionBar' class='center' type="text">
             </div>
             <div class="options px2 w80 center">
                 <div class="row">
                     <div class="settings">
-                        <img id='rotate-i' src="rotate.svg" width='30px' height='30px' alt="">
+                        <img id='rotate-i' src="rotate.svg" width='30px' height='30px' alt="rotate">
                     </div>
                     <div class="settings">
                         <label class="optionCheck tf">Flip
@@ -38,27 +45,28 @@
                     </div>
                     <div class="settings">
                         <label class="optionCheck tf">Grid On
-                            <input id='gridOn' type="checkbox">
+                            <input id='grid' type="checkbox">
                             <span class="check"></span>
                         </label>
                     </div>
                     <div class="settings">
-                        <label class="optionCheck tf">Flip Grid-X
-                            <input id='flipX' type="checkbox">
+                        <label class="optionCheck tf"><span id='gridTypeName'>Col Wise</span>
+                            <input id='gridType' type="checkbox">
                             <span class="check"></span>
                         </label>
                     </div>
                     <div class="settings">
-                        <label class="optionCheck tf">Flip Grid-Y
-                            <input id='flipY' type="checkbox">
+                        <label class="optionCheck tf">Flip Grid
+                            <input id='flipGrid' type="checkbox">
                             <span class="check"></span>
                         </label>
+                    </div>
+                    <div class="settings">
+                        <img src="trash.svg" id="clear" alt="garbage" width="30px" height="30px">
                     </div>
                 </div>
             </div>
-            <div class="textbox center w100 px py">
-                <input id='selectionBar' class='center' type="text">
-            </div>
+            
     </div>
     <script src='tinyWrapper.js'></script>
     <script src='dots.js'></script>
