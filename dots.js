@@ -35,7 +35,6 @@ function dotMatrix(){
         dc('corner').style.height = fontSize+2+padding+'px';
         for(var i=0; i<8; i++){
             dc('gridY').innerHTML+=`<div class='yCol'><p>${1<<((flipGrid)?(8-(i+1)) : i)}</p></div>`;
-            dc('yCol', i).style.width = 12.5+'%';
             dc('yCol', i).style.height = width+'px';
             dc('yCol', i).style.padding = `${padding+'px'} 0`;
             dcn(dc('yCol', i)).style.fontSize = `${fontSize + 'px'}`;
@@ -71,7 +70,25 @@ function dotMatrix(){
         }
     }
    
-
+    //textBox
+    var textBox = d('selectionBar');
+    var copyBtn = dc('copyText');
+    if(window.innerWidth > 767){
+        textBox.style.fontSize = width*0.8+'px';
+        textBox.style.padding = `${width*0.1}px ${width*1.95}px ${width*0.1}px ${width}px`;
+        copyBtn.style.padding = `${width*0.2}px ${width*0.4}px`;
+        copyBtn.style.fontSize = `${width*0.44}px`;
+        copyBtn.style.top = `${(dc('textbox').getBoundingClientRect().height - copyBtn.getBoundingClientRect().height)/2}px`;
+        copyBtn.style.left = `${dc('textbox').getBoundingClientRect().width*0.915}px`;
+    }else{
+        textBox.style.fontSize = width*0.44+'px';
+        textBox.style.padding = `${width*0.23}px ${width*1.6}px ${width*0.23}px ${width}px`;
+        copyBtn.style.padding = `${width*0.15}px ${width*0.25}px`;
+        copyBtn.style.fontSize = `${width*0.44}px`;
+        copyBtn.style.top = `${(dc('textbox').getBoundingClientRect().height - copyBtn.getBoundingClientRect().height)/2}px`;
+        copyBtn.style.left = `${dc('textbox').getBoundingClientRect().width*0.845}px`;
+    }
+    
     button();
     updateTextBox();
     
@@ -193,4 +210,11 @@ da(d('flipGrid'), 'change', dotMatrix);
 
 document.getElementsByName('textType').forEach(item =>{
     da(item, 'change', updateTextBox);
+});
+
+da(dc('copyText'), 'click', function(){
+    var txt = d('selectionBar')
+    txt.select();
+    txt.setSelectionRange(0,99999);
+    document.execCommand('copy');
 });

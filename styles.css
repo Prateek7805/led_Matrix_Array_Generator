@@ -54,6 +54,9 @@ body{
 .dt{
     display: table;
 }
+.dib{
+    display: inline-block !important;
+}
 .dn{
     display:none;
 }
@@ -188,9 +191,7 @@ body{
 }
 
 @media (max-width: 499px){
-    .row > div{
-        padding: 25px;
-    }
+    
     .c6{
         width: 100%;
     }

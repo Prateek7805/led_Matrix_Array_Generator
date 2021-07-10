@@ -20,12 +20,24 @@
     float: left;
     width: 16.66%;
 }
+.textbox{
+    position: relative;
+}
 .textbox>input{
-    font-size: 2.2em;
-    padding: 5px 30px;
-    width: 80%;
+    width: 100%;
     border: none;
     border-radius: 3em;
+}
+.copyText{
+    position: absolute;
+    background-color: #171717;
+    color: #fff;
+    opacity: 0.8;
+    border: none;
+    border-radius: 9999px;
+}
+.copyText:hover{
+    opacity: 1;
 }
 /*Radio*/
 .optionRadio{
@@ -34,7 +46,7 @@
     padding-left: 35px;
     margin-bottom: 12px;
     cursor: pointer;
-    font-size: 22px;
+    font-size: 1.2em;
 }
 .optionRadio input{
     display: none;
@@ -81,7 +93,7 @@
     padding-left: 35px;
     margin-bottom: 12px;
     cursor:pointer;
-    font-size: 23px;
+    font-size: 1.2em;
 }
 .optionCheck input{
     display: none;
@@ -135,6 +147,7 @@
     float: left;
 }
 .yCol, .corner{
+    width: 12.5%;
     float:right;
     clear:both;
 }
@@ -161,4 +174,32 @@
 
 .rowPx > div{
     padding: 5px;
+}
+
+@media (max-width: 767px){
+    .textbox{
+        width: 94%;
+    }
+    .t-title{
+        font-size: 2.5em;;
+    }
+    .yCol{
+        width: 58.33%;
+    }
+    .side{
+        width: 15%;
+    }
+    .middle{
+        width: 70%;
+    }
+    .options{
+        width: 94%;
+    }
+    .settings{
+        width:33.33%;
+
+    }
+    .formatType{
+        width: 50%;
+    }
 }
