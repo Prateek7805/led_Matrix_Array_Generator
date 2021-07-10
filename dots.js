@@ -34,7 +34,7 @@ function dotMatrix(){
         dc('gridY').innerHTML = `<div class='corner'></div>`;
         dc('corner').style.height = fontSize+2+padding+'px';
         for(var i=0; i<8; i++){
-            dc('gridY').innerHTML+=`<div class='yCol'><p>${1<<i}</p></div>`;
+            dc('gridY').innerHTML+=`<div class='yCol'><p>${1<<((flipGrid)?(8-(i+1)) : i)}</p></div>`;
             dc('yCol', i).style.width = 12.5+'%';
             dc('yCol', i).style.height = width+'px';
             dc('yCol', i).style.padding = `${padding+'px'} 0`;
@@ -53,7 +53,7 @@ function dotMatrix(){
     }
     if(gridOn && gridType){
         for(var i=0; i<8; i++){
-            dcn(dc('xCol', i)).innerHTML = 1<<(i);
+            dcn(dc('xCol', i)).innerHTML = 1<<((flipGrid)?(8-(i+1)) : i);
             dc('xCol', i).style.padding = `0 0 ${padding + 'px'} 0`;
             dcn(dc('xCol', i)).style.fontSize = `${fontSize + 'px'}`; 
         }
@@ -116,21 +116,28 @@ function mouseUp(){
     }
 }
 function updateTextBox(){
-    var arr = [0,0,0,0,0,0,0,0]
-    var cString = 'uint8_t arr[8] = {'
+    const textTypes = [{start : '', end : ''}, {start : 'uint8_t arr[8] = {',end : '};'},{start : 'arr = [', end : ']'}, {start : '[', end : ']'}];
+    var index = 1;
+    document.getElementsByName('textType').forEach(item=>{
+        if(item.checked){
+            index = parseInt(item.id.substring(1));
+        }
+    }
+    );
+    er(index)
+    var arr = [0,0,0,0,0,0,0,0];
+    var text = textTypes[index].start;
     for(var i=0; i<8; i++){
         var temp = 0;
         for(var j=0; j<8; j++){
-            temp += parseInt((d('gridType').checked? selectedDots[i][j] : selectedDots[j][i])*(1<<j));
+            temp += parseInt((d('gridType').checked? selectedDots[i][j] : selectedDots[j][i])*(1<<(d('flipGrid').checked?(8-(j+1)) : j)));
         }
         arr[i] = temp;
-        cString += temp + ',';
+        text += temp + ',';
     }
-
     d('clear').src = (arr.every(item => item === 0))? 'trash.svg' : 'trash-2.svg';
-
-    cString = cString.substring(0, cString.length - 1) + '};';
-    d('selectionBar').value = cString;
+    text = text.substring(0, text.length - 1) + textTypes[index].end;
+    d('selectionBar').value = text;
 }
 
 da(d('rotate-i'), 'click', rotateAni);
@@ -171,11 +178,19 @@ da(d('flip'), 'change', function(){
 });
 
 da(d('grid'), 'change', dotMatrix);
+
 da(d('gridType'), 'change', function(){
     dotMatrix();
     d('gridTypeName').innerHTML = this.checked? 'Row Wise' : 'Col Wise';
 });
+
 da(d('clear'), 'click', function(){
     resetDots();
     dotMatrix();
-})
+});
+
+da(d('flipGrid'), 'change', dotMatrix);
+
+document.getElementsByName('textType').forEach(item =>{
+    da(item, 'change', updateTextBox);
+});

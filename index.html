@@ -33,7 +33,7 @@
                 <input id='selectionBar' class='center' type="text">
             </div>
             <div class="options px2 w80 center">
-                <div class="row">
+                <div class="rowPx">
                     <div class="settings">
                         <img id='rotate-i' src="rotate.svg" width='30px' height='30px' alt="rotate">
                     </div>
@@ -63,6 +63,32 @@
                     </div>
                     <div class="settings">
                         <img src="trash.svg" id="clear" alt="garbage" width="30px" height="30px">
+                    </div>
+                </div>
+            </div>
+            <div class="options px2 center w80">
+                <div class="rowPx">
+                    <div class="formatType tf"><label class="optionRadio">Raw
+                        <input type="radio" id='t0' name='textType'>
+                        <span class="check"></span>
+                    </label></div>
+                    <div class="formatType">
+                        <div class="formatType tf"><label class="optionRadio">CArray
+                            <input type="radio" id='t1' name='textType' checked>
+                            <span class="check"></span>
+                        </label></div>
+                    </div>
+                    <div class="formatType">
+                        <div class="formatType tf"><label class="optionRadio">List
+                            <input type="radio" id='t2' name='textType'>
+                            <span class="check"></span>
+                        </label></div>
+                    </div>
+                    <div class="formatType">
+                        <div class="formatType tf"><label class="optionRadio">JSON
+                            <input type="radio" id='t3' name='textType'>
+                            <span class="check"></span>
+                        </label></div>
                     </div>
                 </div>
             </div>

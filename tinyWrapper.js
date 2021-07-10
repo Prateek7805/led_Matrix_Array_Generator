@@ -4,6 +4,9 @@ function d(id){
 function dc(c, i = 0){
     return document.getElementsByClassName(c)[i];
 }
+function dn(n, i=0){
+    return document.getElementsByName(n)[i];
+}
 function dcn(o, i = 0){
     return o.childNodes[i];
 }
